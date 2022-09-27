@@ -1,5 +1,5 @@
 class Board
-
+    # require "byebug"
     # def self.populate(length) #
     #     raise 'length must be even' if length.odd? #rescue and retry.
     #     arr = [1,2,3,4,5,6,7,8,9,10].sample(length / 2)
@@ -29,15 +29,23 @@ class Board
         dup_values = values.dup
         pair_of_num = values.push(dup_values).flatten
 
-
+        i = 0 
         while @grid.flatten.count(nil) > 0 
-
             row = rand(0...@grid.length)
             col = rand(0...@grid.length)
+            if @grid[row][col] == nil
+                @grid[row][col] = pair_of_num[i]
+                i += 1
+            else
+                @grid[row][col] = @grid[row][col]
+                i = i
+            end
+        end
 
-            @grid[row][col] = pair_of_num[i] if @grid[row][col] == nil
-        end    
+
+
     end
+
 
 
 
