@@ -13,12 +13,14 @@ class Board
     end
 
     def [](pos)
-        row, col = pos
+        row = pos[0]
+        col = pos[1]
         @grid[row][col]
     end
 
     def []=(pos, card) 
-        row , col = pos 
+        row = pos[0]
+        col = pos[1]
         @grid[row][col] = card 
     end
 
@@ -42,19 +44,20 @@ class Board
         end
     end
 
-    def render
-        Board.print_grid(@grid)
+    def hidden_board_grid
+        @grid.map do |row|
+            row.map do |ele| 
+                if ele.instance_of? Integer
+                    ele = nil
+                else
+                    ele
+                end
+            end
+        end
     end
 
-
-
-
-
-
-
-
-#wassup kory
-
-
+    def render
+        Board.print_grid(self.hidden_board_grid)
+    end
 
 end 
