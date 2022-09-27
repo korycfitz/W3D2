@@ -14,6 +14,17 @@ class Board
         kory = "kory"
     end
 
+    def [](pos)
+        row, col = pos
+        @grid[row][col] = pos
+    end
+
+    def []=(pos,card) 
+        row , col = pos 
+        @grid[row][col] = card
+    end
+
+
 
 
 
