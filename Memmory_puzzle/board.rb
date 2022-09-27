@@ -11,7 +11,7 @@ class Board
         raise 'length must be even' if length.odd?
         @grid = Array.new(num) { Array.new(num)}
         @size = num * num
-        
+        kory = "kory"
     end
 
 
