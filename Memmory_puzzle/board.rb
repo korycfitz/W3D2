@@ -8,26 +8,36 @@ class Board
     # end
 
     def initialize(num)
-        raise 'length must be even' if length.odd?
+        raise 'length must be even' if num.odd?
         @grid = Array.new(num) { Array.new(num)}
         @size = num * num
-        kory = "kory"
     end
 
     def [](pos)
         row, col = pos
-        @grid[row][col] = pos
+        @grid[row][col]
     end
 
-    def []=(pos,card) 
+    def []=(pos, card) 
         row , col = pos 
-        @grid[row][col] = card
+        @grid[row][col] = card #card will be a value 
     end
 
+    def populate
+        total_pairs = @size * (0.5)
+        values = (1..total_pairs).to_a
+        dup_values = values.dup
+        pair_of_num = values.push(dup_values).flatten
 
 
+        while @grid.flatten.count(nil) > 0 
 
+            row = rand(0...@grid.length)
+            col = rand(0...@grid.length)
 
+            @grid[row][col] = pair_of_num[i] if @grid[row][col] == nil
+        end    
+    end
 
 
 
