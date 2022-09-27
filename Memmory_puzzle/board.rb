@@ -1,11 +1,10 @@
 class Board
     # require "byebug"
-    # def self.populate(length) #
-    #     raise 'length must be even' if length.odd? #rescue and retry.
-    #     arr = [1,2,3,4,5,6,7,8,9,10].sample(length / 2)
-    #     new_arr = arr.dup 
-    #     total_cards = arr.shift(new_arr)
-    # end
+    def self.print_grid(grid)
+        grid.each do |row|
+            puts row.join(" ")
+        end
+    end
 
     def initialize(num)
         raise 'length must be even' if num.odd?
@@ -20,7 +19,7 @@ class Board
 
     def []=(pos, card) 
         row , col = pos 
-        @grid[row][col] = card #card will be a value 
+        @grid[row][col] = card 
     end
 
     def populate
@@ -41,10 +40,19 @@ class Board
                 i = i
             end
         end
-
-
-
     end
+
+    def render
+        Board.print_grid(@grid)
+    end
+
+
+
+
+
+
+
+
 
 
 
